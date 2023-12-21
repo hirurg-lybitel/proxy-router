@@ -22,6 +22,7 @@ export const initHttpServer = () => {
     for (const [serverName, serverOptions] of Object.entries(serversMap)) {
         const app = express();
       
+        /** Все сервера лежат на одной машине, поэтому запрещаем прямой доступ к http серверам извне */
         // const allowedOriginHost = 'localhost';
       
         // app.use((req, res, next) => {
@@ -35,6 +36,10 @@ export const initHttpServer = () => {
       
         app.get('/', (req, res) => {
           res.status(200).send(`Hello ${serverName} API`);
+        }); 
+
+        app.get('/api', (req, res) => {
+            res.status(200).send(`${serverName} api answered OK`);
         }); 
       
         const httpServer = http.createServer(app);
