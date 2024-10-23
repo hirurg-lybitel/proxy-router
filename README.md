@@ -16,7 +16,7 @@ Each http server is described as object:
 Каждый http сервер имеет информацию, какой поддомен он обслуживает и на каком порте работает:
 ```js
 {
-  [firts-server]: { 
+  [first-server]: { 
     host: 'name1.example.com',
     port: 3001
   },
